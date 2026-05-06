@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Bu Meita Sayang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pink-soft: #ffdde1;
+            --pink-deep: #ee9ca7;
+            --gold: #d4a373;
+            --white-glass: rgba(255, 255, 255, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("lucu1.jpeg");
+            height: 100vh;
+            overflow: hidden;
+            color: #444;
+        }
+
+        /* Container Utama untuk Efek Zoom */
+        #viewport {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 2000px;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.2) translateZ(-1000px); /* Efek awal jauh/kecil */
+            transition: all 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Halaman Aktif */
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateZ(0);
+        }
+
+        /* Halaman yang sudah lewat (Zoom In membesar lalu hilang) */
+        .page.exit {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(5) translateZ(500px);
+        }
+
+        /* Elemen Estetik */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .glass-card {
+            background: var(--white-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        /* Teks Berjalan Halaman 2 */
+        .scroll-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-text {
+            animation: moveUp 45s linear infinite;
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        /* Galeri Foto Halaman 4 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+
+        /* Tombol */
+        .btn-next {
+            margin-top: 25px;
+            padding: 12px 35px;
+            border: none;
+            background: #fff;
+            color: #ee9ca7;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.1);
+            background: #ee9ca7;
+            color: #fff;
+        }
+
+        /* Undangan Halaman 6 */
+        .invitation {
+            border: 2px dashed #fff;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        video {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            max-width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <audio id="myAudio" loop>
+        <source src="m.3" type="audio/mpeg">
+    </audio>
+
+    <div id="viewport">
+
+        <div class="page active" id="p1">
+            <h1>Hallo Bu Meitaaa Cantik...</h1>
+            <div class="glass-card">
+                <p>Kata tuan Sandri hari ini ada yang ulang tahun ya? <br> Okey, Tuan Sandri ingin mengirimkan undangan spesial buat Ibu.. dibaca yaaa!</p>
+            </div>
+            <button class="btn-next" onclick="startExperience()">Buka Pesan ❤️</button>
+        </div>
+
+        <div class="page" id="p2">
+            <h1>Happy Birthday Ayang!</h1>
+            <div class="glass-card">
+                <div class="scroll-container">
+                    <div class="scroll-text">
+                        <p>......................................................................................</p>
+                        <br>
+                        <br>
+                        <p>Selamat ulang tahun ya ayangkuh, semoga ditahun ini segala yg ayang inginkan dikabulkan oleh Allah, dipermudah rezekynya...</p>
+                        <br>
+                        <p>Hari ini adalah hari spesialmu, hari di mana kamu semakin bertambah usia dan semakin cantik di mataku. Aku ingin mengucapkan terima kasih atas semua cinta dan kebahagiaan yang kamu bawa ke dalam hidupku...</p>
+                        <br>
+                        <p>Kamu adalah anugerah terindah, pasangan terbaik, dan aku berjanji akan selalu ada untukmu, mendukungmu, dan mencintaimu setiap hari...</p>
+                        <br>
+                        <p>Aku sayang padamu lebih dari apa pun di dunia ini. Semoga semua impianmu tercapai!</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-next" onclick="nextPage(2)"> tunggu habis tulisan, baru Lanjut Sayang --></button>
+        </div>
+
+        <div class="page" id="p3">
+            <h1>Special Video For You</h1>
+            <video width="300" controls id="v1">
+                <source src="video-dio.mp4.mp4" type="video/mp4">
+            </video>
+            <button class="btn-next" onclick="nextPage(3)">Next Memory --></button>
+        </div>
+
+        <div class="page" id="p4">
+            <h1>Setiap Bulan Bersamamu</h1>
+            <div class="glass-card">
+                <div class="gallery-grid">
+                    <img src="foto1.jpg.jpeg" alt="1">
+                    <img src="foto2.jpg.jpeg" alt="2">
+                    <img src="foto3.jpg.jpeg" alt="3">
+                    <img src="foto4.jpg.jpeg" alt="4">
+                    <img src="foto5.jpg.jpeg" alt="5">
+                    <img src="foto6.jpg.jpeg" alt="6">
+                    <img src="foto7.jpeg" alt="7">
+                    <img src="foto8.jpeg" alt="8">
+                    <img src="foto9.jpeg" alt="9">
+                </div>
+            </div>
+            <button class="btn-next" onclick="nextPage(4)">Ada Pesan Video --></button>
+        </div>
+
+        <div class="page" id="p5">
+            <h1>Dari Aku Untukmu</h1>
+            <video width="400" controls id="v2">
+                <source src="video-ucapan.mp4" type="video/mp4">
+            </video>
+            <button class="btn-next" onclick="nextPage(5)">Buka Undangan --></button>
+        </div>
+
+        <div class="page" id="p6">
+            <h1>You're Invited!</h1>
+            <div class="glass-card invitation">
+                <h3>Birthday Celebration Date</h3>
+                <hr style="margin: 10px 0; border: 0; border-top: 1px solid white;">
+                <p>📍 <b>Lokasi:</b> Cilegon Central Mall (marugame) </p>
+                <p>📅 <b>Tanggal:</b> 7 Mei 2026 </p>
+                <p>⏰ <b>Waktu:</b> 17.00 WIB - Selesai</p>
+                <p>👗 <b>Dresscode:</b> Cantik Seperti Biasa ya Ayang</p>
+            </div>
+            <button class="btn-next" onclick="nextPage(6)">Sentuhan Terakhir --></button>
+        </div>
+
+        <div class="page" id="p7">
+            <h1>Terima Kasih, Sayang</h1>
+            <div class="glass-card">
+                <p style="font-family: 'Dancing Script'; font-size: 1.8rem;">
+                    "Terima kasih sudah lahir ke dunia ini dan mengizinkanku menjadi bagian dari hidupmu. Aku mencintaimu hari ini, esok, dan selamanya."
+                </p>
+                <p style="margin-top: 15px;">— Selamanya Milikmu, Sandri —</p>
+            </div>
+            <button class="btn-next" onclick="restart()">Putar Lagi ❤️</button>
+        </div>
+
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+
+        function startExperience() {
+            audio.play(); // Putar musik saat klik pertama
+            nextPage(1);
+        }
+
+        function nextPage(currentNo) {
+            const currentP = document.getElementById('p' + currentNo);
+            const nextP = document.getElementById('p' + (currentNo + 1));
+
+            // Tambahkan kelas exit untuk zoom in membesar
+            currentP.classList.remove('active');
+            currentP.classList.add('exit');
+
+            // Munculkan halaman berikutnya
+            if(nextP) {
+                nextP.classList.add('active');
+            }
+        }
+
+        function restart() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
