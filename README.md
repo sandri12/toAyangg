@@ -1,1 +1,36 @@
-# toAyangg
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Halaman Utama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #e63950;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Selamat Datang ibu meitaaaa💖</h1>
+    <p>Klik tombol di bawah untuk lanjut ke halaman berikutnya</p>
+
+    <a href="index.html" class="btn">Lanjut ➡️</a>
+
+</body>
+</html>
